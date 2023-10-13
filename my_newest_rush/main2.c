@@ -49,6 +49,7 @@ char    *extract_cols(char *sec_str, int start, char *line);
 void extractAndPrintDigits(const char *line);
 int ft_arg(char * main_arg);
 char	*ft_sort_arg(char *dest, char *src);
+int	ft_isdigit(int c);
 
 int	main(int argc, char **argv)
 {
@@ -65,8 +66,8 @@ int	main(int argc, char **argv)
 		write(1, "ERROR!_1", 8);
 		return (0);
 	}
-	else
-		write(1, "Correct argument\n", 17);
+	// else
+	// 	write(1, "Correct argument\n", 17);
 
     int i = 0;
     int j = 0;
@@ -104,6 +105,9 @@ int	main(int argc, char **argv)
             // printf ("%s\n", arg);
             generatePermutations(sequence, 0, length - 1, arg, my_string);
             len = strlen(my_string);
+    		// printf ("\n%s\n", my_string);
+			if (!ft_isdigit(my_string[len - 1]))
+				return(0);
             while (j < 4)
             {
                 my_string[len] = separator;
@@ -115,6 +119,13 @@ int	main(int argc, char **argv)
             j = 0;
         }
     }
+	// printf("checking");
+	// i = 0;
+	// while(my_string[i])
+	// 	i++;
+    // printf ("\n%s\n", my_string);
+	// if (my_string[i - 1] != 'H')
+	// 	return (0);
     // printf ("\n%s\n", my_string);
     // sec_str = my_string;
     extract_rows(my_string, 0, sec_str);
